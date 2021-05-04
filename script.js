@@ -89,9 +89,9 @@ function getRadioValue() {
   radioInputs.forEach((radioInput) => {
     if (radioInput.checked) {
       radioValue = radioInput.value;
-      return radioValue;
     }
   });
+  return radioValue;
 }
 // Form to decide amount
 function selectQuestionAmount(e) {
