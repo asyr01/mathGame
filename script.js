@@ -89,12 +89,15 @@ function getRadioValue() {
   radioInputs.forEach((radioInput) => {
     if (radioInput.checked) {
       radioValue = radioInput.value;
+      return radioValue;
     }
   });
 }
 // Form to decide amount
 function selectQuestionAmount(e) {
   e.preventDefault();
+  questionAmount = getRadioValue();
+  console.log(questionAmount);
 }
 
 startForm.addEventListener('click', () => {
@@ -109,4 +112,4 @@ startForm.addEventListener('click', () => {
 });
 
 // Event Listeners
-startForm.addEventListener('click', selectQuestionAmount);
+startForm.addEventListener('submit', selectQuestionAmount);
