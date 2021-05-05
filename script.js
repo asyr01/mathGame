@@ -41,9 +41,9 @@ function getRandomInt(max) {
 // Create Correct/Incorrect Random Equations
 function createEquations() {
   // Randomly choose how many correct equations there should be
-  const correctEquations =
+  const correctEquations = getRandomInt(questionAmount)
   // Set amount of wrong equations
-  const wrongEquations =
+  const wrongEquations =  questionAmount - correctEquations;
   // Loop through, multiply random numbers up to 9, push to array
   for (let i = 0; i < correctEquations; i++) {
     firstNumber =
@@ -108,6 +108,7 @@ function showCountdown() {
   countdownPage.hidden = false;
   splashPage.hidden = true;
   countDownStart();
+  createEquations();
 }
 
 // Get the value from selected radio button
