@@ -32,8 +32,13 @@ const wrongFormat = [];
 
 // Scroll
 
-// Get Random number up to a max number
+// Displays Game Page
+function showGamePage() {
+  gamePage.hidden = false;
+  countdownPage.hidden = true;
+}
 
+// Get Random number up to a max number
 function getRandomInt(max) {
   return Math.floor(Math.random() * Math.floor(max));
 }
@@ -118,6 +123,7 @@ function countDownStart() {
   setTimeout(() => {
     countdown.textContent = 'START!';
   }, 3000);
+  setTimeout(showGamePage, 4000);
 }
 
 // Navigate from Splash page to CountdownPage
