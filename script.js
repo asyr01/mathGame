@@ -40,6 +40,29 @@ let finalTimeDisplay = '0.0s';
 // Scroll
 let valueY = 0;
 
+// Stop Timer, process results, go to score page(if the questionAmount reached to selected.)
+function checkFinished() {
+  if (playerGuessArray.length == questionAmount) {
+    clearInterval(timer);
+  }
+}
+
+// Add a tenth of a second to timePlayed
+function addTime() {
+  timePlayed += 0.1;
+  checkFinished();
+}
+
+// Start timer when game page is opened
+function startTimer() {
+  // Reset times;
+  timePlayed = 0;
+  penaltyTime = 0;
+  finalTime = 0;
+  timer = setInterval(addTime, 100);
+  gamePage.removeEventListener('click', startTimer);
+}
+
 // Scroll, Store user selection in playerGuessArray
 function select(guessedTrue) {
   // Scroll 80 pixels
@@ -186,3 +209,4 @@ startForm.addEventListener('click', () => {
 
 // Event Listeners
 startForm.addEventListener('submit', selectQuestionAmount);
+gamePage.addEventListener('click', startTimer);
