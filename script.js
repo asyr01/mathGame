@@ -42,8 +42,19 @@ let valueY = 0;
 
 // Stop Timer, process results, go to score page(if the questionAmount reached to selected.)
 function checkFinished() {
+  console.log(timePlayed);
   if (playerGuessArray.length == questionAmount) {
     clearInterval(timer);
+    // Check for wrong guesses, and penalty yime
+    equationsArray.forEach((equation, index) => {
+      if (equation.evaluated === playerGuessArray[index]) {
+        // correct guess, no penalty
+      } else {
+        // Incorrect Guess, Add Penalty
+        penaltyTime += 0.5;
+      }
+    });
+    finalTime = timePlayed + penaltyTime;
   }
 }
 
