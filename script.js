@@ -8,6 +8,7 @@ const startForm = document.getElementById('start-form');
 const radioContainers = document.querySelectorAll('.radio-container');
 const radioInputs = document.querySelectorAll('input');
 const bestScores = document.querySelectorAll('.best-score-value');
+const startBtn = document.querySelector('.start');
 // Countdown Page
 const countdown = document.querySelector('.countdown');
 // Game Page
@@ -52,6 +53,11 @@ function playAgain() {
 
 // Show Score Page
 function showScorePage() {
+  //Show Play again button after 1s
+  setTimeout(() => {
+    playAgainBtn.disabled = false;
+    playAgainBtn.classList.remove('disabled-red');
+  }, 3000);
   gamePage.hidden = true;
   scorePage.hidden = false;
 }
@@ -241,6 +247,7 @@ startForm.addEventListener('click', () => {
     radioEl.classList.remove('selected-label');
     // Add it back if radio input is checked
     if (radioEl.children[1].checked) {
+      startBtn.classList.remove('disabled-red');
       radioEl.classList.add('selected-label');
     }
   });

@@ -253,6 +253,11 @@ button:active {
   color: var(--danger);
 }
 
+.disabled-red {
+  color: white;
+  background-color: red;
+}
+
 /* Media Query: Laptop */
 @media screen and (max-width: 1800px) {
   .game-container {
