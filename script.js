@@ -66,6 +66,25 @@ function getSavedBestScores() {
   bestScoresToDOM();
 }
 
+// Update Best Score Array
+function updateBestScore() {
+  bestScoreArray.forEach((score, index) => {
+    // Select correct Best Score to update
+    if (questionAmount == score.questions) {
+      // Return best Score as number with one decimal
+      const savedBestScore = Number(bestScoreArray[index].bestScore);
+      // Update if the new final score greater than before
+      if (savedBestScore === 0 || savedBestScore > finalTime) {
+        bestScoreArray[index].bestScore = finalTimeDisplay;
+      }
+    }
+  });
+  // Update Splash Page
+  bestScoresToDOM();
+  // Save to local storage
+  localStorage.setItem('bestScores', JSON.stringify(bestScoreArray));
+}
+
 // Reset Game to Play Again
 function playAgain() {
   gamePage.addEventListener('click', startTimer);
@@ -97,6 +116,7 @@ function scoresToDOM() {
   baseTimeEl.textContent = `Base Time: ${baseTime}s`;
   penaltyTimeEl.textContent = `Penalty: +${penaltyTime}s`;
   finalTimeEl.textContent = `${finalTimeDisplay}s`;
+  updateBestScore();
   // Scroll to top, go to score page
   itemContainer.scrollTo({ top: 0, behavior: 'instant' });
   showScorePage();
