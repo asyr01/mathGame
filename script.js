@@ -40,6 +40,17 @@ let finalTimeDisplay = '0.0s';
 // Scroll
 let valueY = 0;
 
+// Format & Display Time in DOM
+function scoresToDOM() {
+  finalTimeDisplay = finalTime.toFixed(1);
+  baseTime = timePlayed.toFixed(1);
+  penaltyTime = penaltyTime.toFixed(1);
+  baseTimeEl.textContent = `Base Time: ${baseTime}`;
+  penaltyTimeEl.textContent = `Penalty: +${penaltyTime}s`;
+  finalTimeEl.textContent = `${finalTimeDisplay}s`;
+  showScorePage();
+}
+
 // Stop Timer, process results, go to score page(if the questionAmount reached to selected.)
 function checkFinished() {
   console.log(timePlayed);
@@ -55,6 +66,7 @@ function checkFinished() {
       }
     });
     finalTime = timePlayed + penaltyTime;
+    scoresToDOM();
   }
 }
 
