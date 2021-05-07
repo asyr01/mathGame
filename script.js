@@ -44,6 +44,8 @@ let valueY = 0;
 // Reset Game to Play Again
 function playAgain() {
   gamePage.addEventListener('click', startTimer);
+  playAgainBtn.disabled = true;
+  playAgainBtn.classList.add('disabled');
   scorePage.hidden = true;
   splashPage.hidden = false;
   equationsArray = [];
@@ -56,7 +58,7 @@ function showScorePage() {
   //Show Play again button after 1s
   setTimeout(() => {
     playAgainBtn.disabled = false;
-    playAgainBtn.classList.remove('disabled-red');
+    playAgainBtn.classList.remove('disabled');
   }, 3000);
   gamePage.hidden = true;
   scorePage.hidden = false;
@@ -70,6 +72,8 @@ function scoresToDOM() {
   baseTimeEl.textContent = `Base Time: ${baseTime}s`;
   penaltyTimeEl.textContent = `Penalty: +${penaltyTime}s`;
   finalTimeEl.textContent = `${finalTimeDisplay}s`;
+  // Scroll to top, go to score page
+  itemContainer.scrollTo({ top: 0, behavior: 'instant' });
   showScorePage();
 }
 
@@ -247,7 +251,7 @@ startForm.addEventListener('click', () => {
     radioEl.classList.remove('selected-label');
     // Add it back if radio input is checked
     if (radioEl.children[1].checked) {
-      startBtn.classList.remove('disabled-red');
+      startBtn.classList.remove('disabled');
       radioEl.classList.add('selected-label');
     }
   });

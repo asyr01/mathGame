@@ -253,9 +253,9 @@ button:active {
   color: var(--danger);
 }
 
-.disabled-red {
+.disabled {
   color: white;
-  background-color: red;
+  background-color: gray;
 }
 
 /* Media Query: Laptop */
