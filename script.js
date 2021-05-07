@@ -40,6 +40,16 @@ let finalTimeDisplay = '0.0s';
 // Scroll
 let valueY = 0;
 
+// Reset Game to Play Again
+function playAgain() {
+  gamePage.addEventListener('click', startTimer);
+  scorePage.hidden = true;
+  splashPage.hidden = false;
+  equationsArray = [];
+  playerGuessArray = [];
+  valueY = 0;
+}
+
 // Show Score Page
 function showScorePage() {
   gamePage.hidden = true;
